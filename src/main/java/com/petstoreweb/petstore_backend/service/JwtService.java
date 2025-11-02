@@ -51,14 +51,20 @@ public class JwtService {
         // Obtenemos los detalles del usuario que ha iniciado sesión.
         User userPrincipal = (User) authentication.getPrincipal();
         String username = userPrincipal.getUsername();
+        
+        // Extraer roles del usuario
+        String roles = userPrincipal.getAuthorities().stream()
+                .map(authority -> authority.getAuthority())
+                .collect(java.util.stream.Collectors.joining(","));
 
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + expirationTime);
 
-        // Construimos el token con el nombre de usuario, fecha de emisión,
+        // Construimos el token con el nombre de usuario, roles, fecha de emisión,
         // fecha de expiración y lo firmamos con nuestra clave secreta.
         return Jwts.builder()
                 .setSubject(username)
+                .claim("rol", roles) // Agregar roles al token
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
                 .signWith(getSigningKey())
