@@ -1,0 +1,19 @@
+# Render service configuration - despliegue desde la rama `render-deploy`
+services:
+  - type: web
+    name: petstore-backend
+    env: java
+    branch: render-deploy
+    plan: starter
+    buildCommand: "./mvnw -DskipTests package"
+    startCommand: "java -jar target/*.jar --server.port=$PORT"
+    # No incluyas secretos aquí. Define las siguientes variables en la UI de Render:
+    # SPRING_DATASOURCE_URL, SPRING_DATASOURCE_USERNAME, SPRING_DATASOURCE_PASSWORD
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        value: ""
+      - key: SPRING_DATASOURCE_USERNAME
+        value: ""
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: ""
+    healthCheckPath: "/actuator/health"
