@@ -24,8 +24,8 @@ public class Usuario {
     @Column(name = "rol_usuario", nullable = false)
     private String rol;
 
-    @Column(name = "estado", nullable = false)
-    private boolean estado;
+    @Column(name = "estado", nullable = true)
+    private Boolean estado;
 
 
 
@@ -61,11 +61,11 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public boolean isEstado() {
+    public Boolean isEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
 }
