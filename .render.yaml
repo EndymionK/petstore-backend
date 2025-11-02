@@ -2,11 +2,11 @@
 services:
   - type: web
     name: petstore-backend
-    env: java
+    env: docker
     branch: render-deploy
     plan: starter
-    buildCommand: "./mvnw -DskipTests package"
-    startCommand: "java -jar target/*.jar --server.port=$PORT"
+    # When using Docker, Render will build the Dockerfile in the repo root.
+    dockerfilePath: Dockerfile
     # No incluyas secretos aquí. Define las siguientes variables en la UI de Render:
     # SPRING_DATASOURCE_URL, SPRING_DATASOURCE_USERNAME, SPRING_DATASOURCE_PASSWORD
     envVars:
@@ -16,6 +16,5 @@ services:
         value: ""
       - key: SPRING_DATASOURCE_PASSWORD
         value: ""
-      - key: JAVA_VERSION
-        value: "21"
-    healthCheckPath: "/actuator/health"
+    # If you don't have Spring Actuator, set a simple path like '/' instead.
+    healthCheckPath: "/"
