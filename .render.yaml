@@ -16,4 +16,6 @@ services:
         value: ""
       - key: SPRING_DATASOURCE_PASSWORD
         value: ""
+      - key: JAVA_VERSION
+        value: "21"
     healthCheckPath: "/actuator/health"
