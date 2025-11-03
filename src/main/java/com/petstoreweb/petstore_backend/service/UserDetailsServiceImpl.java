@@ -38,7 +38,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         Usuario usuario = usuarioRepository.findByNombre(username)
                 .orElseThrow(() -> new UsernameNotFoundException("No se encontró el usuario: " + username));
 
+        // DEBUG: Log para verificar rol en producción
+        System.out.println("🔍 DEBUG - Usuario: " + usuario.getNombre());
+        System.out.println("🔍 DEBUG - Rol desde BD: [" + usuario.getRol() + "]");
+        System.out.println("🔍 DEBUG - Rol procesado: ROLE_" + usuario.getRol().toUpperCase());
+
         List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + usuario.getRol().toUpperCase()));
+        
+        System.out.println("🔍 DEBUG - Authorities: " + authorities);
 
         return new User(usuario.getNombre(), usuario.getPassword(), authorities);
     }
