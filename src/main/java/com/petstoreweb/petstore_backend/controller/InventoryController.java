@@ -3,9 +3,7 @@ package com.petstoreweb.petstore_backend.controller;
 import com.petstoreweb.petstore_backend.dto.ActualizarStockRequest;
 import com.petstoreweb.petstore_backend.dto.ActualizarUmbralRequest;
 import com.petstoreweb.petstore_backend.dto.CrearProductoRequest;
-import com.petstoreweb.petstore_backend.dto.NotificacionResponse;
 import com.petstoreweb.petstore_backend.dto.ProductoResponse;
-import com.petstoreweb.petstore_backend.service.NotificacionService;
 import com.petstoreweb.petstore_backend.service.ProductoService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -18,11 +16,9 @@ import java.util.List;
 public class InventoryController {
 
     private final ProductoService productoService;
-    private final NotificacionService notificacionService;
 
-    public InventoryController(ProductoService productoService, NotificacionService notificacionService) {
+    public InventoryController(ProductoService productoService) {
         this.productoService = productoService;
-        this.notificacionService = notificacionService;
     }
 
     @GetMapping("/test")
@@ -75,11 +71,5 @@ public class InventoryController {
     public ResponseEntity<List<ProductoResponse>> obtenerProductosConStockBajo() {
         List<ProductoResponse> productos = productoService.obtenerProductosConStockBajo();
         return ResponseEntity.ok(productos);
-    }
-
-    @GetMapping("/notificaciones")
-    public ResponseEntity<List<NotificacionResponse>> obtenerNotificaciones() {
-        List<NotificacionResponse> notificaciones = notificacionService.obtenerNotificacionesActivas();
-        return ResponseEntity.ok(notificaciones);
     }
 }
