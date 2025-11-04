@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
  * Se genera automáticamente cuando un producto cae por debajo de su umbral mínimo.
  */
 @Entity
-@Table(name = "tblNotificaciones", schema = "public")
+@Table(name = "\"tblNotificaciones\"", schema = "public")
 public class Notificacion {
 
     @Id

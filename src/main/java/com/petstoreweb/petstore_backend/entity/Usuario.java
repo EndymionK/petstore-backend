@@ -7,7 +7,7 @@ import jakarta.persistence.*; // Importante que sea de jakarta.persistence
  * Cada campo de la clase corresponde a una columna de la tabla.
  */
 @Entity
-@Table(name = "tblUsuarios", schema = "public")
+@Table(name = "\"tblUsuarios\"", schema = "public")
 public class Usuario {
 
     @Id

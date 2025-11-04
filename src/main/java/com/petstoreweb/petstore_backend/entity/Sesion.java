@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
  * Representa una sesión activa de un usuario en el sistema.
  */
 @Entity
-@Table(name = "tblSesiones", schema = "public")
+@Table(name = "\"tblSesiones\"", schema = "public")
 public class Sesion {
 
     @Id
