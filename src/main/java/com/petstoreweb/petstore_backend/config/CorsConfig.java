@@ -15,17 +15,13 @@ public class CorsConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         
-        // Permitir orígenes específicos (Vercel y localhost)
-        configuration.setAllowedOrigins(Arrays.asList(
-            "http://localhost:3000",
-            "http://localhost:3001",
-            "https://paw-home-inventory-system.vercel.app"
-        ));
-        
-        // Permitir todos los patrones de Vercel (previews y branches)
+        // Permitir todos los patrones de Vercel y localhost
+        // IMPORTANTE: Usar solo setAllowedOriginPatterns para que funcione con setAllowCredentials(true)
         configuration.setAllowedOriginPatterns(Arrays.asList(
-            "https://*.vercel.app",
-            "http://localhost:*"
+            "https://paw-home-inventory-system.vercel.app",
+            "https://*.vercel.app",  // Todas las previews de Vercel
+            "http://localhost:*",     // Todos los puertos de localhost
+            "http://127.0.0.1:*"      // Alternativa de localhost
         ));
         
         // Métodos HTTP permitidos
