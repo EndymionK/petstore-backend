@@ -49,6 +49,9 @@ public class ProductoService {
         producto.setStock(request.getCantidad());
         producto.setPrecio(request.getPrecio());
         producto.setProveedor(proveedor);
+        producto.setUmbralMinimo(request.getUmbralMinimo());
+        producto.setImagen(request.getImagen());
+        producto.setDescripcion(request.getDescripcion());
 
         // Guardar y retornar
         Producto productoGuardado = productoRepository.save(producto);
@@ -67,7 +70,7 @@ public class ProductoService {
      * la información de stock bajo basado en el umbral mínimo.
      */
     private ProductoResponse convertirAProductoResponse(Producto producto) {
-        return new ProductoResponse(
+        ProductoResponse response = new ProductoResponse(
                 producto.getCodigo(),
                 producto.getNombre(),
                 producto.getStock(),
@@ -76,6 +79,9 @@ public class ProductoService {
                 producto.getUmbralMinimo(),
                 producto.tieneStockBajo() // CA02 y CA03: marca automáticamente como stock bajo
         );
+        response.setImagen(producto.getImagen());
+        response.setDescripcion(producto.getDescripcion());
+        return response;
     }
 
     @Transactional

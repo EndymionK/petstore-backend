@@ -21,6 +21,15 @@ public class CrearProductoRequest {
     @NotNull(message = "El proveedor es obligatorio")
     private Integer idProveedor;
 
+    @Min(value = 0, message = "El umbral mínimo debe ser mayor o igual a 0")
+    private Integer umbralMinimo;
+
+    @Size(max = 500, message = "La URL de imagen no debe exceder los 500 caracteres")
+    private String imagen;
+
+    @Size(max = 1000, message = "La descripción no debe exceder los 1000 caracteres")
+    private String descripcion;
+
     public String getNombre() {
         return nombre;
     }
@@ -51,6 +60,30 @@ public class CrearProductoRequest {
 
     public void setIdProveedor(Integer idProveedor) {
         this.idProveedor = idProveedor;
+    }
+
+    public Integer getUmbralMinimo() {
+        return umbralMinimo;
+    }
+
+    public void setUmbralMinimo(Integer umbralMinimo) {
+        this.umbralMinimo = umbralMinimo;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }
 

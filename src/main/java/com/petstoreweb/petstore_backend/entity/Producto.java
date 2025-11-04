@@ -40,6 +40,12 @@ public class Producto {
     @Column(name = "umbral_minimo")
     private Integer umbralMinimo;
 
+    @Column(name = "imagen_producto", length = 500)
+    private String imagen;
+
+    @Column(name = "descripcion_producto", columnDefinition = "TEXT")
+    private String descripcion;
+
     public Producto() {
     }
 
@@ -104,6 +110,22 @@ public class Producto {
 
     public void setUmbralMinimo(Integer umbralMinimo) {
         this.umbralMinimo = umbralMinimo;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     /**

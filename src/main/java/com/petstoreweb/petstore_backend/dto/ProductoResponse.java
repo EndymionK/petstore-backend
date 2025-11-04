@@ -10,6 +10,8 @@ public class ProductoResponse {
     private String proveedorNombre;
     private Integer umbralMinimo;
     private Boolean stockBajo;
+    private String imagen;
+    private String descripcion;
 
     public ProductoResponse() {
     }
@@ -30,6 +32,18 @@ public class ProductoResponse {
         this.proveedorNombre = proveedorNombre;
         this.umbralMinimo = umbralMinimo;
         this.stockBajo = stockBajo;
+    }
+
+    public ProductoResponse(Integer codigo, String nombre, Integer stock, BigDecimal precio, String proveedorNombre, Integer umbralMinimo, Boolean stockBajo, String imagen, String descripcion) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.stock = stock;
+        this.precio = precio;
+        this.proveedorNombre = proveedorNombre;
+        this.umbralMinimo = umbralMinimo;
+        this.stockBajo = stockBajo;
+        this.imagen = imagen;
+        this.descripcion = descripcion;
     }
 
     public Integer getCodigo() {
@@ -86,6 +100,22 @@ public class ProductoResponse {
 
     public void setStockBajo(Boolean stockBajo) {
         this.stockBajo = stockBajo;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }
 
