@@ -5,7 +5,7 @@ import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "tblproductos", schema = "public")
+@Table(name = "tblProductos", schema = "public")
 public class Producto {
 
     @Id
